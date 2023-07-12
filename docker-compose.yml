@@ -1,0 +1,27 @@
+version: "2.0"
+services:
+  prometheus:
+    build: Prometheus/.
+    image: artifactory.devops-nhattien.asia:26855/docker-local/prometheus:latest
+    container_name: prometheus_datasrouce
+    restart: always
+    port:
+      - "9090:9090"
+    environment:
+      - INIT_MEM=512m
+      - MAX_MEM=1024m
+    volume:
+      - prometheus-config:/etc/prometheus
+    
+  metric-nginx:
+    build: Metric/Nginx/.
+    image: artifactory.devops-nhattien.asia:26855/docker-local/metric/prometheus/nginx:latest
+    container_name: metric-prometheus-nginx
+    command: -nginx.scrape-uri=http://192.168.1.2:8090/nginx_status
+    restart: always
+    port:
+      - "9113:9113"
+    
+
+volume:
+  prometheus-config:
