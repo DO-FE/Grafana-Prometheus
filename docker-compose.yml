@@ -21,6 +21,10 @@ services:
     restart: always
     port:
       - "9113:9113"
+    environment:
+      - INIT_MEM=256m
+      - MAX_MEM=512m
+    
     
 
 volume:
