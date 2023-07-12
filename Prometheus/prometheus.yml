@@ -30,3 +30,8 @@ scrape_configs:
     metrics_path: "/jenkins/prometheus"
     static_configs:
       - targets: ["192.168.1.2:8080"]
+
+  - job_name: "hardware-linux"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["192.168.1.2:19091"]
