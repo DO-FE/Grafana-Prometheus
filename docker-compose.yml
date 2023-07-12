@@ -27,5 +27,5 @@ services:
     
     
 
-volume:
+volumes:
   prometheus-config:
