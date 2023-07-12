@@ -10,8 +10,6 @@ services:
     environment:
       - INIT_MEM=512m
       - MAX_MEM=1024m
-    volumes:
-      - prometheus-config:/etc/prometheus
     
   metric-nginx:
     build: Metric/Nginx/.
@@ -24,8 +22,3 @@ services:
     environment:
       - INIT_MEM=256m
       - MAX_MEM=512m
-    
-    
-
-volumes:
-  prometheus-config:
